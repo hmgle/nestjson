@@ -14,9 +14,9 @@ func TestStr2Map(t *testing.T) {
 		t.Errorf("err: %v\n", err)
 		return
 	}
-	t.Logf("m: %+v\n", m)
+	jsonStr, _ := json.MarshalIndent(m, "", "\t")
+	t.Logf("input: %s\n", string(jsonStr))
 	out := nestjson.NestFlattenMap(m)
-	t.Logf("out: %v\n", out)
-	jsonStr, _ := json.MarshalIndent(out, "", "\t")
-	t.Logf("%s\n", string(jsonStr))
+	jsonStr, _ = json.MarshalIndent(out, "", "\t")
+	t.Logf("output: %s\n", string(jsonStr))
 }
